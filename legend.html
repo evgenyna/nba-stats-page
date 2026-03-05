@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Stats Legend</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; }
+        h1 { color: #333; text-align: center; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .top-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .btn { padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 14px; border: none; cursor: pointer; }
+        .back-btn { background-color: #6c757d; }
+        .dl-btn { background-color: #007bff; }
+        
+        .scroll-container { 
+            max-height: 500px; 
+            overflow-y: auto; 
+            border: 1px solid #ddd; 
+            margin-top: 10px; 
+        }
+        
+        .legend-table { width: 100%; border-collapse: collapse; }
+        .legend-table th, .legend-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        
+        .legend-table thead th { 
+            background-color: #f2f2f2; 
+            position: sticky; 
+            top: 0; 
+            z-index: 10; 
+            box-shadow: 0 2px 2px -1px rgba(0,0,0,0.1);
+        }
+        
+        .legend-table tbody tr:nth-of-type(odd) { background-color: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Full Column Legend</h1>
+        <div class="top-nav">
+            <a href="nba_stats.html" class="btn back-btn">Back to Stats</a>
+            <a href="data:text/csv;charset=utf-8,Column%20Name%2CDescription%0APLAYER_ID%2CUnique%20NBA%20ID%20for%20the%20player%0APLAYER_NAME%2CFull%20name%20of%20the%20player%0ANICKNAME%2CPlayer%20nickname%0ATEAM_ID%2CUnique%20NBA%20ID%20for%20the%20team%0ATEAM_ABBREVIATION%2CThree-letter%20team%20code%0AAGE%2CAge%20of%20the%20player%0AGP%2CGames%20Played%0AW%2CWins%0AL%2CLosses%0AW_PCT%2CWin%20Percentage%0AMIN%2CMinutes%20Played%0AFGM%2CField%20Goals%20Made%0AFGA%2CField%20Goals%20Attempted%0AFG_PCT%2CField%20Goal%20Percentage%0AFG3M%2CThree%20Pointers%20Made%0AFG3A%2CThree%20Pointers%20Attempted%0AFG3_PCT%2CThree%20Point%20Percentage%0AFTM%2CFree%20Throws%20Made%0AFTA%2CFree%20Throws%20Attempted%0AFT_PCT%2CFree%20Throw%20Percentage%0AOREB%2COffensive%20Rebounds%0ADREB%2CDefensive%20Rebounds%0AREB%2CTotal%20Rebounds%0AAST%2CAssists%0ATOV%2CTurnovers%0ASTL%2CSteals%0ABLK%2CBlocks%0ABLKA%2CBlocks%20Against%20%28Times%20blocked%29%0APF%2CPersonal%20Fouls%0APFD%2CPersonal%20Fouls%20Drawn%0APTS%2CTotal%20Points%0APLUS_MINUS%2CPlus-Minus%20Rating%0ANBA_FANTASY_PTS%2CNBA%20Fantasy%20Points%20Score%0ADD2%2CDouble-Doubles%0ATD3%2CTriple-Doubles%0AWNBA_FANTASY_PTS%2CWNBA%20Fantasy%20Points%20Score%0AGP_RANK%2CLeague-wide%20rank%20in%20Games%20Played%0AW_RANK%2CLeague-wide%20rank%20in%20Wins%0AL_RANK%2CLeague-wide%20rank%20in%20Losses%0AW_PCT_RANK%2CLeague-wide%20rank%20in%20Win%20Percentage%0AMIN_RANK%2CLeague-wide%20rank%20in%20Minutes%20Played%0AFGM_RANK%2CLeague-wide%20rank%20in%20Field%20Goals%20Made%0AFGA_RANK%2CLeague-wide%20rank%20in%20Field%20Goals%20Attempted%0AFG_PCT_RANK%2CLeague-wide%20rank%20in%20Field%20Goal%20Percentage%0AFG3M_RANK%2CLeague-wide%20rank%20in%20Three%20Pointers%20Made%0AFG3A_RANK%2CLeague-wide%20rank%20in%20Three%20Pointers%20Attempted%0AFG3_PCT_RANK%2CLeague-wide%20rank%20in%20Three%20Point%20Percentage%0AFTM_RANK%2CLeague-wide%20rank%20in%20Free%20Throws%20Made%0AFTA_RANK%2CLeague-wide%20rank%20in%20Free%20Throws%20Attempted%0AFT_PCT_RANK%2CLeague-wide%20rank%20in%20Free%20Throw%20Percentage%0AOREB_RANK%2CLeague-wide%20rank%20in%20Offensive%20Rebounds%0ADREB_RANK%2CLeague-wide%20rank%20in%20Defensive%20Rebounds%0AREB_RANK%2CLeague-wide%20rank%20in%20Total%20Rebounds%0AAST_RANK%2CLeague-wide%20rank%20in%20Assists%0ATOV_RANK%2CLeague-wide%20rank%20in%20Turnovers%0ASTL_RANK%2CLeague-wide%20rank%20in%20Steals%0ABLK_RANK%2CLeague-wide%20rank%20in%20Blocks%0ABLKA_RANK%2CLeague-wide%20rank%20in%20Blocks%20Against%20%28Times%20blocked%29%0APF_RANK%2CLeague-wide%20rank%20in%20Personal%20Fouls%0APFD_RANK%2CLeague-wide%20rank%20in%20Personal%20Fouls%20Drawn%0APTS_RANK%2CLeague-wide%20rank%20in%20Total%20Points%0APLUS_MINUS_RANK%2CLeague-wide%20rank%20in%20Plus-Minus%20Rating%0ANBA_FANTASY_PTS_RANK%2CLeague-wide%20rank%20in%20NBA%20Fantasy%20Points%20Score%0ADD2_RANK%2CLeague-wide%20rank%20in%20Double-Doubles%0ATD3_RANK%2CLeague-wide%20rank%20in%20Triple-Doubles%0AWNBA_FANTASY_PTS_RANK%2CLeague-wide%20rank%20in%20WNBA%20Fantasy%20Points%20Score%0ATEAM_COUNT%2CNumber%20of%20teams%20played%20for%20in%20the%20season%0ASEASON_NAME%2CThe%20NBA%20Season%20%28e.g.%2C%202024-25%29" download="legend.csv" class="btn dl-btn">Download Legend CSV</a>
+        </div>
+        <div class="scroll-container">
+            <table class="legend-table">
+                <thead><tr><th>Column Name</th><th>Description</th></tr></thead>
+                <tbody><tr><td><b>PLAYER_ID</b></td><td>Unique NBA ID for the player</td></tr><tr><td><b>PLAYER_NAME</b></td><td>Full name of the player</td></tr><tr><td><b>NICKNAME</b></td><td>Player nickname</td></tr><tr><td><b>TEAM_ID</b></td><td>Unique NBA ID for the team</td></tr><tr><td><b>TEAM_ABBREVIATION</b></td><td>Three-letter team code</td></tr><tr><td><b>AGE</b></td><td>Age of the player</td></tr><tr><td><b>GP</b></td><td>Games Played</td></tr><tr><td><b>W</b></td><td>Wins</td></tr><tr><td><b>L</b></td><td>Losses</td></tr><tr><td><b>W_PCT</b></td><td>Win Percentage</td></tr><tr><td><b>MIN</b></td><td>Minutes Played</td></tr><tr><td><b>FGM</b></td><td>Field Goals Made</td></tr><tr><td><b>FGA</b></td><td>Field Goals Attempted</td></tr><tr><td><b>FG_PCT</b></td><td>Field Goal Percentage</td></tr><tr><td><b>FG3M</b></td><td>Three Pointers Made</td></tr><tr><td><b>FG3A</b></td><td>Three Pointers Attempted</td></tr><tr><td><b>FG3_PCT</b></td><td>Three Point Percentage</td></tr><tr><td><b>FTM</b></td><td>Free Throws Made</td></tr><tr><td><b>FTA</b></td><td>Free Throws Attempted</td></tr><tr><td><b>FT_PCT</b></td><td>Free Throw Percentage</td></tr><tr><td><b>OREB</b></td><td>Offensive Rebounds</td></tr><tr><td><b>DREB</b></td><td>Defensive Rebounds</td></tr><tr><td><b>REB</b></td><td>Total Rebounds</td></tr><tr><td><b>AST</b></td><td>Assists</td></tr><tr><td><b>TOV</b></td><td>Turnovers</td></tr><tr><td><b>STL</b></td><td>Steals</td></tr><tr><td><b>BLK</b></td><td>Blocks</td></tr><tr><td><b>BLKA</b></td><td>Blocks Against (Times blocked)</td></tr><tr><td><b>PF</b></td><td>Personal Fouls</td></tr><tr><td><b>PFD</b></td><td>Personal Fouls Drawn</td></tr><tr><td><b>PTS</b></td><td>Total Points</td></tr><tr><td><b>PLUS_MINUS</b></td><td>Plus-Minus Rating</td></tr><tr><td><b>NBA_FANTASY_PTS</b></td><td>NBA Fantasy Points Score</td></tr><tr><td><b>DD2</b></td><td>Double-Doubles</td></tr><tr><td><b>TD3</b></td><td>Triple-Doubles</td></tr><tr><td><b>WNBA_FANTASY_PTS</b></td><td>WNBA Fantasy Points Score</td></tr><tr><td><b>GP_RANK</b></td><td>League-wide rank in Games Played</td></tr><tr><td><b>W_RANK</b></td><td>League-wide rank in Wins</td></tr><tr><td><b>L_RANK</b></td><td>League-wide rank in Losses</td></tr><tr><td><b>W_PCT_RANK</b></td><td>League-wide rank in Win Percentage</td></tr><tr><td><b>MIN_RANK</b></td><td>League-wide rank in Minutes Played</td></tr><tr><td><b>FGM_RANK</b></td><td>League-wide rank in Field Goals Made</td></tr><tr><td><b>FGA_RANK</b></td><td>League-wide rank in Field Goals Attempted</td></tr><tr><td><b>FG_PCT_RANK</b></td><td>League-wide rank in Field Goal Percentage</td></tr><tr><td><b>FG3M_RANK</b></td><td>League-wide rank in Three Pointers Made</td></tr><tr><td><b>FG3A_RANK</b></td><td>League-wide rank in Three Pointers Attempted</td></tr><tr><td><b>FG3_PCT_RANK</b></td><td>League-wide rank in Three Point Percentage</td></tr><tr><td><b>FTM_RANK</b></td><td>League-wide rank in Free Throws Made</td></tr><tr><td><b>FTA_RANK</b></td><td>League-wide rank in Free Throws Attempted</td></tr><tr><td><b>FT_PCT_RANK</b></td><td>League-wide rank in Free Throw Percentage</td></tr><tr><td><b>OREB_RANK</b></td><td>League-wide rank in Offensive Rebounds</td></tr><tr><td><b>DREB_RANK</b></td><td>League-wide rank in Defensive Rebounds</td></tr><tr><td><b>REB_RANK</b></td><td>League-wide rank in Total Rebounds</td></tr><tr><td><b>AST_RANK</b></td><td>League-wide rank in Assists</td></tr><tr><td><b>TOV_RANK</b></td><td>League-wide rank in Turnovers</td></tr><tr><td><b>STL_RANK</b></td><td>League-wide rank in Steals</td></tr><tr><td><b>BLK_RANK</b></td><td>League-wide rank in Blocks</td></tr><tr><td><b>BLKA_RANK</b></td><td>League-wide rank in Blocks Against (Times blocked)</td></tr><tr><td><b>PF_RANK</b></td><td>League-wide rank in Personal Fouls</td></tr><tr><td><b>PFD_RANK</b></td><td>League-wide rank in Personal Fouls Drawn</td></tr><tr><td><b>PTS_RANK</b></td><td>League-wide rank in Total Points</td></tr><tr><td><b>PLUS_MINUS_RANK</b></td><td>League-wide rank in Plus-Minus Rating</td></tr><tr><td><b>NBA_FANTASY_PTS_RANK</b></td><td>League-wide rank in NBA Fantasy Points Score</td></tr><tr><td><b>DD2_RANK</b></td><td>League-wide rank in Double-Doubles</td></tr><tr><td><b>TD3_RANK</b></td><td>League-wide rank in Triple-Doubles</td></tr><tr><td><b>WNBA_FANTASY_PTS_RANK</b></td><td>League-wide rank in WNBA Fantasy Points Score</td></tr><tr><td><b>TEAM_COUNT</b></td><td>Number of teams played for in the season</td></tr><tr><td><b>SEASON_NAME</b></td><td>The NBA Season (e.g., 2024-25)</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
